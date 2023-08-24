@@ -1,0 +1,326 @@
+<?xml version="1.0" ?><dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_4B780EE4-B4CE-486E-A13C-B833D5A25236" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_70203870-5543-4667-9787-8F667F5F3195" name="Fee Generator" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_4B780EE4-B4CE-486E-A13C-B833D5A25236"><dmn:extensionElements/><dmn:itemDefinition id="_9E0D84E3-F3E5-446B-9C4E-EF7BA78DECF5" name="tProcessData" isCollection="false"><dmn:itemComponent id="_36FA3D4C-C408-4C8E-993E-99E7E121C1DE" name="ProcessId" isCollection="false"><dmn:typeRef>number</dmn:typeRef><dmn:allowedValues kie:constraintType="enumeration" id="_F9A4B315-B6B1-465B-AEED-8667471976C8"><dmn:text>487</dmn:text></dmn:allowedValues></dmn:itemComponent><dmn:itemComponent id="_2EBFA1FC-2D79-4A1B-9669-5040BAD92D7D" name="Ctc" isCollection="false"><dmn:typeRef>boolean</dmn:typeRef></dmn:itemComponent><dmn:itemComponent id="_42C10470-C6EA-424F-BF2B-C024042859F4" name="FillingFee" isCollection="false"><dmn:typeRef>boolean</dmn:typeRef></dmn:itemComponent><dmn:itemComponent id="_F2AA8530-20B0-4EF7-8E13-231FDD455158" name="CompanyType" isCollection="false"><dmn:typeRef>string</dmn:typeRef><dmn:allowedValues kie:constraintType="enumeration" id="_ED824621-3B07-49E9-BD26-4042991D0CEA"><dmn:text>"Local", "International", "Private Company", "LLP"</dmn:text></dmn:allowedValues></dmn:itemComponent><dmn:itemComponent id="_90230280-3EA3-43BA-8C4D-6F0599A27562" name="ShareCapital" isCollection="false"><dmn:typeRef>number</dmn:typeRef></dmn:itemComponent><dmn:itemComponent id="_2EFD291D-B94A-463A-8E8E-4AFAF9D42E91" name="ApplicationType" isCollection="false"><dmn:typeRef>string</dmn:typeRef><dmn:allowedValues kie:constraintType="enumeration" id="_4B8A99A5-672F-4966-AB09-183A2956DBE1"><dmn:text>"Offline", "Online"</dmn:text></dmn:allowedValues></dmn:itemComponent><dmn:itemComponent id="_8E04B132-564D-47C7-9A8A-78536EDED1B7" name="BusinessNature" isCollection="false"><dmn:typeRef>string</dmn:typeRef><dmn:allowedValues kie:constraintType="enumeration" id="_4EEF5B8F-AB65-44AF-B768-C7E6E6F7B9FC"><dmn:text>"PE and VC fund management (FMC)", "Micro Credit", "Voluntary pension funds", "Micro Finance"</dmn:text></dmn:allowedValues></dmn:itemComponent><dmn:itemComponent id="_3AFBDA54-D728-482D-9CF7-CA1BCD6025F5" name="FedGovOwned" isCollection="false"><dmn:typeRef>boolean</dmn:typeRef></dmn:itemComponent></dmn:itemDefinition><dmn:itemDefinition id="_3A782FB8-5819-4419-ACBC-DF3BC3BD12EA" name="tFeeItems" isCollection="false"><dmn:itemComponent id="_315E78C5-4324-4B43-A205-800930DB3FBB" name="FeeItemsId" isCollection="false"><dmn:typeRef>context</dmn:typeRef></dmn:itemComponent><dmn:itemComponent id="_967AC363-34E4-4060-A0C0-A992ED2485AD" name="Amount" isCollection="false"><dmn:typeRef>number</dmn:typeRef></dmn:itemComponent></dmn:itemDefinition><dmn:inputData id="_4E3179CF-18BB-4A69-ABA3-B45B7314743D" name="ProcessData"><dmn:extensionElements/><dmn:variable id="_9E755234-9DFA-493E-9EB6-782568F23D7C" name="ProcessData" typeRef="tProcessData"/></dmn:inputData><dmn:decision id="_8C264E3C-B681-4ACF-8F2E-F2BEEA79ACB4" name="CNR"><dmn:extensionElements/><dmn:variable id="_09140B04-89F8-44C8-B66E-123C83E3A186" name="CNR" typeRef="tFeeItems"/><dmn:informationRequirement id="_A725279A-EDEE-4E31-9927-9DDAB126A54D"><dmn:requiredInput href="#_4E3179CF-18BB-4A69-ABA3-B45B7314743D"/></dmn:informationRequirement><dmn:decisionTable id="_BD850916-7EDD-47A5-BC22-3AB75766614D" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row"><dmn:input id="_7314AFE9-6143-4742-9EA0-BD844045C6DA"><dmn:inputExpression id="_4C7DB805-91A4-4357-98E1-77AF4D113510" typeRef="string"><dmn:text>ProcessData.CompanyType</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_899E58DC-117D-4D1D-B3AD-9714EDE04327"><dmn:inputExpression id="_CD526726-3F10-4E72-8418-1029BF770632" typeRef="number"><dmn:text>ProcessData.ProcessId</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_F7137EF0-4FFA-4072-AF88-A7EC3094CA73"><dmn:inputExpression id="_B03C2D5E-F1C8-4E39-805F-D2CB206F1A7D" typeRef="string"><dmn:text>ProcessData.ApplicationType</dmn:text></dmn:inputExpression></dmn:input><dmn:output id="_9A8A1B7F-AD9E-4F96-8690-883A84EC6422" name="NameReservationFee" typeRef="context"/><dmn:output id="_CC9C770E-628E-41A1-9EB1-D7C31E208558" name="Amount" typeRef="number"/><dmn:annotation name="annotation-1"/><dmn:rule id="_1E97B0C0-BA70-4542-9799-B523D41771D9"><dmn:inputEntry id="_8FA138E1-1280-4BAB-B2F3-5047F038ABA9"><dmn:text>"Private Company"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_E2B74BFD-9DE4-4C46-97E8-A1B69BC950FB"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_EA47B06C-87D3-4B26-9F93-AF0772ECB647"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_04C3A01E-3AEC-4764-A2A9-76F32488F168"><dmn:text>{"1":200}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_FD1AA101-8DCB-45C5-A917-34D2B9E616DB"><dmn:text>200</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_927D6576-8168-47C8-B23B-BB5B1009E321"><dmn:inputEntry id="_7BBFE703-8586-4972-B4EE-F79B2839A05E"><dmn:text>"Private Company"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_7E5A3389-283F-4114-A6FB-5B3E9DED280A"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_CDAE370A-071E-4176-82CB-50DE4D97C65A"><dmn:text>"Offline"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_E61AE3E4-B940-4CDF-9FDD-2BEFD8C7E015"><dmn:text>{"1":500}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_8D4C6200-B142-4131-A986-C8534CAE437B"><dmn:text>500</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_EAFA95CF-885A-4B1A-9A28-0D946D082BAC"><dmn:inputEntry id="_F620A417-F543-4807-8BB2-45A3FAB2CD26"><dmn:text>"LLP"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_201AF85C-568E-4D6F-9C04-58D07028A2A7"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_5689876E-8A6F-4B58-9BB0-683FDE165493"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_5F7C1294-43F7-4C66-B2CC-F94F3402E9F5"><dmn:text>{"1":100}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_328739D6-5CF6-4214-8CF0-D32D5DF5FF50"><dmn:text>100</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_C04B5B82-792C-4C64-8BC6-9E23431F5979"><dmn:inputEntry id="_662B6F16-9C6C-4909-A51E-DD7C1602A2C3"><dmn:text>"LLP"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_6D8ACA04-5390-43D2-863E-BCB81565C8D5"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_50B82A13-C594-4104-BB5E-7B8AF35DF971"><dmn:text>"Offline"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_AF268625-9A41-4A52-8650-4836A204D8DF"><dmn:text>{"1":200}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_B84421EF-3717-422D-9AF5-047013E06AB5"><dmn:text>200</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_21ED1FB4-5191-4C71-A41A-A45057B03E16"><dmn:inputEntry id="_3995DC39-316B-4DD8-92C7-35A9278979F7"><dmn:text>"Public Company"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_299E0971-0BB9-43AD-9C24-66DA15B0AB25"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_0E61171C-2918-453B-AD67-156CFD734C66"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_06E71F30-5F48-430E-B402-DA794B8365F0"><dmn:text>{"1":200}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_AA01A693-6956-4FEE-A6E2-B90292DEDD07"><dmn:text>200</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_D2A730B7-5A5A-46A9-9070-80C92FD7CD74"><dmn:inputEntry id="_9C93C910-C208-45AF-A8B0-51CB82A64856"><dmn:text>"Public Company"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_8420BAD5-A2DF-44C1-A579-FC6D51293C47"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_7A29C4C5-401D-4C10-AEA4-975DB858B402"><dmn:text>"Offline"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_07E48E42-D85F-4D12-A9C7-5A607493C0D6"><dmn:text>{"1":500}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_D0FCD235-AE4A-490F-A2F2-CAB2EABAF6B4"><dmn:text>500</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_C6E44E87-41C6-4719-979B-2CE62817DEF5"><dmn:inputEntry id="_CBC53357-87DD-4A8B-8D9C-02D1FA1DFB19"><dmn:text>"Single Member Company (SMC)"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_2FE33768-33C2-4472-99A8-F97472AA64A4"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_4068F81B-7E8B-4BD4-98E7-56479A68FE8C"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_82804D50-1A01-4B57-9BC9-35E1FB8539CC"><dmn:text>{"1":200}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_173F9638-E8C5-40AB-B5AA-25969046E2B9"><dmn:text>200</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_E33154D4-488D-4E5C-A771-ABCB14052BFB"><dmn:inputEntry id="_979DE643-E8A5-4154-889A-CE148C4006B6"><dmn:text>"Single Member Company (SMC)"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_C0694B9C-866D-4678-823C-9C262EE813D5"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_89B87EE0-C510-4423-8FD4-313256FA19CE"><dmn:text>"Offline"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_26793F91-377D-4B89-BC7D-27A0898BCE13"><dmn:text>{"1":500}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_EA1D1080-10FF-4B2A-9996-2013CCE4CB0C"><dmn:text>500</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_582CC95C-4D20-4AC0-8B78-504795CD1B56"><dmn:inputEntry id="_EC01C85E-49F8-4FDF-8397-043727E88C13"><dmn:text>"Company under section 45 of Companies Act 2017"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_E29BD31F-C18B-4C1D-B063-2CDA3AB85101"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_DB678C33-88E3-4DB2-971C-3FE629B1AF1F"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_A087DBA8-E5B7-49AC-B6CB-CB5D41865923"><dmn:text>{"1":200}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_7726C315-F3EA-497D-A1DF-25A34651A075"><dmn:text>200</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_EFB6D444-04A7-4855-A64D-90EAF3FF7A04"><dmn:inputEntry id="_3B9C22C8-F96B-4FB2-91DE-5314F674A02A"><dmn:text>"Company under section 45 of Companies Act 2017"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_2D54EC7A-DBF1-4AA0-8A0E-D636BCCC6655"><dmn:text>478</dmn:text></dmn:inputEntry><dmn:inputEntry id="_40353B49-2561-4A0E-B37A-0C5F8DA239A0"><dmn:text>"Offline"</dmn:text></dmn:inputEntry><dmn:outputEntry id="_FCD672F9-6582-4972-9200-5100C0C34B49"><dmn:text>{"1":500}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_37C95DD5-E8C8-4DA6-A84D-955E75E5341C"><dmn:text>500</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule></dmn:decisionTable></dmn:decision><dmn:decision id="_EC9133E3-A168-425E-9626-017337CBFC65" name="CI"><dmn:extensionElements/><dmn:variable id="_86117AB5-0415-410D-AF12-EBAEC2A8BA74" name="CI" typeRef="tFeeItems"/><dmn:informationRequirement id="_C4072869-C183-45AF-9366-7CDD9AD773CF"><dmn:requiredInput href="#_4E3179CF-18BB-4A69-ABA3-B45B7314743D"/></dmn:informationRequirement><dmn:decisionTable id="_622186C7-8817-48B7-A106-EF2C96FFE054" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row"><dmn:input id="_B1BCB44A-44C6-42AA-AE9D-8D13BED41BE1"><dmn:inputExpression id="_758E50E3-1AF9-4ECB-8905-5E63D6EFC1EB" typeRef="string"><dmn:text>ProcessData.CompanyType</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_3CBD2C81-BA59-425D-97E1-729E119474ED"><dmn:inputExpression id="_4548942B-0DB0-4D4E-9D5A-C5DA2BF552AE" typeRef="boolean"><dmn:text>ProcessData.FillingFee</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_32E90A4C-386D-4A68-B5ED-722126F50EEB"><dmn:inputExpression id="_2DA733AA-3B1A-4EB2-B5FB-9600E814AEB8" typeRef="number"><dmn:text>ProcessData.ProcessId</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_245C655B-192B-46D2-B1EE-95EAC76F3BF9"><dmn:inputExpression id="_8557983C-DC8D-4F75-BAEC-2A3E1BD7D828" typeRef="string"><dmn:text>ProcessData.ApplicationType</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_C2688D94-989C-4E3E-AC82-6DB48B347A88"><dmn:inputExpression id="_F51CBFBE-1F5A-4053-9EEE-A10C534E468D" typeRef="boolean"><dmn:text>ProcessData.FedGovOwned</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_2499853A-B8C3-443A-841C-A66F8E32F8EC"><dmn:inputExpression id="_580FA5A7-A0CA-4016-958F-09C62D8614D1" typeRef="number"><dmn:text>ProcessData.ShareCapital</dmn:text></dmn:inputExpression></dmn:input><dmn:output id="_A7DA28FB-30C2-4E84-B32C-3E69EA6F9F52" name="NameReservationFee" typeRef="string"/><dmn:output id="_62AF9492-5F58-4348-B7A7-F308B3A2C714" name="IncorporationFee" typeRef="context"/><dmn:output id="_4288C184-5CAE-4291-9E5B-A5DC7B46557F" name="FillingFee" typeRef="context"/><dmn:output id="_978089BD-70F9-4669-9E8D-12DF76FCF124" name="PermissionToFormFee" typeRef="number"/><dmn:output id="_663FAF72-E91E-4EC5-BF69-D7B579FCE4C5" name="CtcAmount" typeRef="number"/><dmn:output id="_8188A28D-EB37-4A84-B8A3-60EC86A49D39" name="Amount" typeRef="number"/><dmn:annotation name="annotation-1"/><dmn:rule id="_2796DCB0-E0EA-4976-B688-80C2DBD1D51A"><dmn:inputEntry id="_60FF02AC-3A1C-4EDD-BF27-A02381910DCF"><dmn:text>"LLP"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_CD64B05D-00E8-45D2-97BB-E76B05649C54"><dmn:text>-</dmn:text></dmn:inputEntry><dmn:inputEntry id="_B93553E8-EDF4-4DBD-997D-8D0B7DCBB8BC"><dmn:text>479</dmn:text></dmn:inputEntry><dmn:inputEntry id="_1D8A0367-7090-4908-A8AA-46675106BEA7"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_5EA03EC1-A28F-480B-86F6-27B554931931"><dmn:text>-</dmn:text></dmn:inputEntry><dmn:inputEntry id="_B4F8C444-E275-4ED0-8B48-0B4EB57369E6"><dmn:text>-</dmn:text></dmn:inputEntry><dmn:outputEntry id="_FD95CE16-C469-4DCC-8AC8-9B5CD74579AB"><dmn:text>{"1":100}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_D126ECCA-2B58-4146-B747-9E454F73A199"><dmn:text>{"2":1000}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_F5281122-94AA-46B6-A7F7-2DE34D73A760"><dmn:text></dmn:text></dmn:outputEntry><dmn:outputEntry id="_9DB4529A-CF84-4000-990B-F1C77ED498F5"><dmn:text></dmn:text></dmn:outputEntry><dmn:outputEntry id="_F5FF7E1D-13B0-42A8-B393-DC5AA3988ADD"><dmn:text>{"4":if ProcessData.Ctc = true 
+then 300
+else 0
+}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_91A4F557-BB12-4F37-93C9-18DB077B4F1F"><dmn:text>if ProcessData.Ctc = true 
+then 1400
+else 1100
+</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_900D7B31-0025-4095-AD57-18F6F010A527"><dmn:inputEntry id="_04C81DA2-A829-4121-A4BC-31B4F0A6D977"><dmn:text>"LLP"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_62A72C64-8B9F-40C3-A161-068782DDBE96"><dmn:text>-</dmn:text></dmn:inputEntry><dmn:inputEntry id="_A1080F98-1059-4DFE-85BB-5A3BCC843189"><dmn:text>479</dmn:text></dmn:inputEntry><dmn:inputEntry id="_4C96FCF8-58B0-4475-AA57-5D7FB5FFE7CA"><dmn:text>"Offline"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_5CE58421-8D7D-42A6-855C-525069212F02"><dmn:text>-</dmn:text></dmn:inputEntry><dmn:inputEntry id="_767F3A1C-7E72-41E7-9182-9351FC85EE6A"><dmn:text>-</dmn:text></dmn:inputEntry><dmn:outputEntry id="_028DC42F-5CBF-4388-8A07-400B569F1DF6"><dmn:text>{"1":200}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_75A0490A-F5F1-4D66-924D-B4B6C6168644"><dmn:text>{"2":2000}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_3A2698BD-6E39-4E19-AC6A-3BAF5A259A1A"><dmn:text></dmn:text></dmn:outputEntry><dmn:outputEntry id="_A99AEE74-CC6B-4EA4-BCA0-18E622E13C36"><dmn:text></dmn:text></dmn:outputEntry><dmn:outputEntry id="_544B65C9-B975-459B-B503-8F63FE79F4E6"><dmn:text>{"4":if ProcessData.Ctc = true 
+then 600
+else 0
+}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_AAC65378-720C-4F29-8BBE-2622FD33A4A2"><dmn:text>if ProcessData.Ctc = true 
+then 2800
+else 2200</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_0727C029-D12B-4107-ABC4-F2C3238854A2"><dmn:inputEntry id="_997D785D-31BE-4917-93B0-0567940A694A"><dmn:text>"Private Company"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_88B139DB-D171-4F03-BEBB-E5147BFA0B98"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_D563FDB3-7C98-4547-87A1-5A65083A606E"><dmn:text>479</dmn:text></dmn:inputEntry><dmn:inputEntry id="_40F5FC26-900F-468D-B85C-607BFF2C6132"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_93B56AA9-9237-4E22-83C7-D34DFF25D9A7"><dmn:text>false</dmn:text></dmn:inputEntry><dmn:inputEntry id="_16E51BC0-28A6-42A7-A410-5A9C85CAAFE9"><dmn:text>&gt;1</dmn:text></dmn:inputEntry><dmn:outputEntry id="_46495FA8-05D1-4BA9-888E-90E884195524"><dmn:text></dmn:text></dmn:outputEntry><dmn:outputEntry id="_2E0656D3-AEA4-4927-B15A-F5B52462353F"><dmn:text>{"2": if ProcessData.FedGovOwned = false then
+    if ProcessData.ShareCapital &lt;= 100000 then
+        2200
+    else if ProcessData.ShareCapital &lt;= 5000000000 then
+        ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+    else
+        35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+else
+    10000
+}
+</dmn:text></dmn:outputEntry><dmn:outputEntry id="_AC3596B7-82A9-4608-AA88-B06AE2E09910"><dmn:text>{"2":if ProcessData.FillingFee = true then 1000 
+else if ProcessData.FillingFee = false then 0 else 0}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_3D187182-5596-42F9-A59C-03A174F0DC26"><dmn:text>{"3":if ProcessData.BusinessNature ="Voluntary pension funds" then 100000 
+else if ProcessData.BusinessNature = "PE and VC fund management (FMC)" then 500000 
+else if ProcessData.BusinessNature="Micro Finance / Micro Credit" then 125000 
+else if ProcessData.BusinessNature="-" then 0 else 250000}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_5CCF17D5-F864-4BA7-905F-057C072F8661"><dmn:text>{"4":if ProcessData.Ctc = true then
+	if ProcessData.CompanyType="Private Company"then 450
+	else 800
+else if ProcessData.Ctc = false then 0 else 0
+}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_8F6A7148-AC85-4F5F-A35A-85D12175FC74"><dmn:text>sum(
+    if ProcessData.FedGovOwned = false then
+        if ProcessData.ShareCapital &lt;= 100000 then
+            2200
+        else if ProcessData.ShareCapital &lt;= 5000000000 then
+            ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+        else
+            35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+    else
+        10000,
+    
+    if ProcessData.FillingFee = true then
+        1000
+    else if ProcessData.FillingFee = false then
+        0
+    else
+        0,
+    
+    if ProcessData.BusinessNature = "Voluntary pension funds" then
+        100000
+    else if ProcessData.BusinessNature = "PE and VC fund management (FMC)" then
+        500000
+    else if ProcessData.BusinessNature = "Micro Finance / Micro Credit" then
+        125000
+    else if ProcessData.BusinessNature = "-" then
+        0
+    else
+        250000,
+    
+    if ProcessData.Ctc = true then
+        if ProcessData.CompanyType = "Private Company" then
+            450
+        else
+            800
+    else
+        0
+)
+</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_F3BF007C-606C-4B7D-A700-E9C8146D7DA3"><dmn:inputEntry id="_DFFAEC46-FA2A-47BE-87A3-6B8C4CC53837"><dmn:text>"Private Company"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_19688B8C-45E1-42D8-8DD9-6FECD6DF27DC"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_80D44A62-19C3-4E6B-BF1A-A529C6474351"><dmn:text>479</dmn:text></dmn:inputEntry><dmn:inputEntry id="_ECBB6D48-8467-4027-B8F4-5BA684807262"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_13362D1B-6D69-4B7B-95BA-FA380A98CA29"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_BBDCA76B-0317-4233-B7AA-08F78BEA6617"><dmn:text>&gt;1</dmn:text></dmn:inputEntry><dmn:outputEntry id="_0C2D62F1-6624-4BAB-B08B-487E38F99AB3"><dmn:text></dmn:text></dmn:outputEntry><dmn:outputEntry id="_BB16EA41-CD40-4BD3-9D04-8BD13F60569E"><dmn:text>{"2" : if ProcessData.FedGovOwned = false then
+    if ProcessData.ShareCapital &lt;= 100000 then
+        2200
+    else if ProcessData.ShareCapital &lt;= 5000000000 then
+        ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+    else
+        35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+else
+    10000
+}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_D62EE5F7-A0E4-41C4-9FAA-321E4C5C78F2"><dmn:text>{"2":if ProcessData.FillingFee = true then 1000 
+else if ProcessData.FillingFee = false then 0 else 0}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_2AB17C99-7501-427C-B9C8-F0F54158EBAD"><dmn:text>{"3":if ProcessData.BusinessNature ="Voluntary pension funds" then 100000 
+else if ProcessData.BusinessNature = "PE and VC fund management (FMC)" then 500000 
+else if ProcessData.BusinessNature="Micro Finance / Micro Credit" then 125000 
+else if ProcessData.BusinessNature="-" then 0 else 250000}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_7D09AD3F-3794-4AA2-B4AF-80D4A91B1B03"><dmn:text>{"4":if ProcessData.Ctc = true then
+	if ProcessData.CompanyType="Private Company"then 450
+	else 800
+else if ProcessData.Ctc = false then 0 else 0}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_F4C7D87C-EE93-4EEA-B878-64B0F5579FBD"><dmn:text>sum(
+    if ProcessData.FedGovOwned = false then
+        if ProcessData.ShareCapital &lt;= 100000 then
+            2200
+        else if ProcessData.ShareCapital &lt;= 5000000000 then
+            ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+        else
+            35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+    else
+        10000,
+    
+    if ProcessData.FillingFee = true then
+        1000
+    else if ProcessData.FillingFee = false then
+        0
+    else
+        0,
+    
+    if ProcessData.BusinessNature = "Voluntary pension funds" then
+        100000
+    else if ProcessData.BusinessNature = "PE and VC fund management (FMC)" then
+        500000
+    else if ProcessData.BusinessNature = "Micro Finance / Micro Credit" then
+        125000
+    else if ProcessData.BusinessNature = "-" then
+        0
+    else
+        250000,
+    
+    if ProcessData.Ctc = true then
+        if ProcessData.CompanyType = "Private Company" then
+            450
+        else
+            800
+    else
+        0
+)
+</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_624C9419-94FE-4025-8FBB-D843EC5B9470"><dmn:inputEntry id="_282E9CEB-9B95-41E1-AE2F-6C12D787A382"><dmn:text>"Private Company"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_BD5010B6-A27C-4291-8D99-3DFD0883CC2A"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_606CA329-21AB-4B3B-9E33-2C3955B74B4C"><dmn:text>479</dmn:text></dmn:inputEntry><dmn:inputEntry id="_306B0517-B1C4-4B47-9173-336870A3B4D8"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_46B717C4-D78B-42D3-8E89-DC8B93B1A2A8"><dmn:text>false</dmn:text></dmn:inputEntry><dmn:inputEntry id="_3C5E3571-807F-41C0-A7D2-E9995480911B"><dmn:text>=0</dmn:text></dmn:inputEntry><dmn:outputEntry id="_2D441170-B0C9-4DCD-BB66-93AC330A77E6"><dmn:text></dmn:text></dmn:outputEntry><dmn:outputEntry id="_CADE55DD-37A6-4CB5-A97E-B38E3F4C1F45"><dmn:text>{"2":if ProcessData.FedGovOwned = false and ProcessData.ShareCapital != 0 then
+    if ProcessData.ShareCapital &lt;= 100000 then
+        2200
+    else if ProcessData.ShareCapital &lt;= 5000000000 then
+        ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+    else
+        35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+else if ProcessData.CompanyType="Companies u/s 42" then 27500
+else
+    22000
+}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_3AEEBA07-BEA8-4DF3-AD8F-39B09A868C03"><dmn:text>{"2":if ProcessData.FillingFee = true then 1000 
+else if ProcessData.FillingFee = false then 0 else 0}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_B5AAA6FD-7C79-4198-8139-929F2D240D87"><dmn:text>{"3":if ProcessData.CompanyType = "Companies u/s 42" then
+    150000
+else
+    0
+}
+</dmn:text></dmn:outputEntry><dmn:outputEntry id="_8D1215AC-53AA-46BD-B755-44D0981A3E9C"><dmn:text>{"4":if ProcessData.Ctc = true then
+	if ProcessData.CompanyType="Private Company"then 450
+	else 800
+else if ProcessData.Ctc = false then 0 else 0
+}</dmn:text></dmn:outputEntry><dmn:outputEntry id="_8A0322DA-F30F-448F-B8B5-DA0056F05A1D"><dmn:text>sum(
+   if ProcessData.FedGovOwned = false and ProcessData.ShareCapital != 0 then
+    if ProcessData.ShareCapital &lt;= 100000 then
+        2200
+    else if ProcessData.ShareCapital &lt;= 5000000000 then
+        ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+    else
+        35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+     else if ProcessData.CompanyType="Companies u/s 42" then 27500
+     else
+        22000
+,
+    if ProcessData.CompanyType = "Companies u/s 42" then
+    150000
+    else
+    0,
+    if ProcessData.FillingFee = true then
+        1000
+    else if ProcessData.FillingFee = false then
+        0
+    else
+       
+    if ProcessData.Ctc = true then
+        if ProcessData.CompanyType = "Private Company" then
+            450
+        else
+            800
+    else
+        0
+)
+</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule></dmn:decisionTable></dmn:decision><dmn:decision id="_E5C06A69-9880-4CA9-AE13-08C2577DA57D" name="COMBINED"><dmn:extensionElements/><dmn:variable id="_BB22D87C-888A-47A3-BF44-FC4B541526A3" name="COMBINED" typeRef="tFeeItems"/><dmn:informationRequirement id="_212396B1-1C68-41AE-B8C6-6FFA8CA7EB78"><dmn:requiredInput href="#_4E3179CF-18BB-4A69-ABA3-B45B7314743D"/></dmn:informationRequirement><dmn:decisionTable id="_5B15D920-BE92-45A1-A977-9D7CCBAF4F2B" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row"><dmn:input id="_8D8967B7-E9A0-48DD-8C4F-6462BB4E41CA"><dmn:inputExpression id="_A1B7DB24-1923-4F7A-8D28-9CB04CED0A76" typeRef="boolean"><dmn:text>ProcessData.Ctc</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_947FE336-7690-4A29-9D51-6F3E328F43BA"><dmn:inputExpression id="_DCE11657-D6A9-4B96-B47F-DCB8B00FA431" typeRef="boolean"><dmn:text>ProcessData.FillingFee</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_A3D053CA-43B0-42BD-A6DF-C60920D2B227"><dmn:inputExpression id="_C3CA0A65-FBFA-4438-945C-5E1CACEA77D4" typeRef="number"><dmn:text>ProcessData.ProcessId</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_C2FA797E-DC5C-4AB5-91AD-32526355DCA6"><dmn:inputExpression id="_8D56439D-2E43-49D7-898F-5112427FAD8C" typeRef="string"><dmn:text>ProcessData.ApplicationType</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_839076D1-E0CF-447A-984D-6746864299AF"><dmn:inputExpression id="_85C7F06F-1FCE-40F7-88FC-203698BE0958" typeRef="boolean"><dmn:text>ProcessData.FedGovOwned</dmn:text></dmn:inputExpression></dmn:input><dmn:input id="_429E90AA-BA9B-482B-9092-67B3030CC17D"><dmn:inputExpression id="_E1ECB75E-882B-45FA-916B-D8028C782F8C" typeRef="number"><dmn:text>ProcessData.ShareCapital</dmn:text></dmn:inputExpression></dmn:input><dmn:output id="_B4291A37-DB91-4365-8BCF-CAFDB683FF63" name="NameReservation" typeRef="number"/><dmn:output id="_01772D51-15C8-4B1D-98E3-19286FF2BE45" name="IncorporationFee" typeRef="number"/><dmn:output id="_338D5368-5BA5-4484-B5A5-45536B1E45E6" name="FillingFee" typeRef="number"/><dmn:output id="_2533F76F-6331-4E67-93DA-2B47637FE8A9" name="PermissionToFormFee" typeRef="number"/><dmn:output id="_D68F34E7-3C29-4DFA-ACCC-E5112BCF78CC" name="CtcAmount" typeRef="number"/><dmn:output id="_656D0ECF-8D7C-4DA7-AE96-264538B73314" name="Amount" typeRef="number"/><dmn:output id="_6B1D8B21-75D0-48DC-BB17-B268A6C5DF78" name="FeeItemsId" typeRef="context"/><dmn:annotation name="annotation-1"/><dmn:rule id="_7A3B541D-4D05-4638-AC1A-74D6876C672A"><dmn:inputEntry id="_8455E441-71F2-484B-AB78-0446D1E0BA54"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_A62DA042-C254-4977-9950-2AEEF909F365"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_C8FC11A8-0D02-44A3-8CB6-333BFC3B63C2"><dmn:text>480</dmn:text></dmn:inputEntry><dmn:inputEntry id="_B4712F7D-FF62-4665-992D-31CF622B904C"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_BD830663-F8A4-4BD7-8600-FDB6607F513D"><dmn:text>false</dmn:text></dmn:inputEntry><dmn:inputEntry id="_A5C8CB35-10D5-4A08-BC71-15465C1D188A"><dmn:text>&gt;1</dmn:text></dmn:inputEntry><dmn:outputEntry id="_AA67536B-025D-457A-A029-7C5412F324FA"><dmn:text>200</dmn:text></dmn:outputEntry><dmn:outputEntry id="_949EBF6B-387E-41FD-9C15-F6C2EDDA797D"><dmn:text>if ProcessData.FedGovOwned = false then
+    if ProcessData.ShareCapital &lt;= 100000 then
+        2200
+    else if ProcessData.ShareCapital &lt;= 5000000000 then
+        ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+    else
+        35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+else
+    10000
+</dmn:text></dmn:outputEntry><dmn:outputEntry id="_7CB00A77-E47A-4D78-BCE8-86E543D894AB"><dmn:text>if ProcessData.FillingFee = true then 1000 
+else if ProcessData.FillingFee = false then 0 else 0</dmn:text></dmn:outputEntry><dmn:outputEntry id="_CFEBCC13-9A1C-4E4D-9124-3369F5B52DEE"><dmn:text>if ProcessData.BusinessNature ="Voluntary pension funds" then 100000 
+else if ProcessData.BusinessNature = "PE and VC fund management (FMC)" then 500000 
+else if ProcessData.BusinessNature="Micro Finance / Micro Credit" then 125000 
+else if ProcessData.BusinessNature="-" then 0 else 250000</dmn:text></dmn:outputEntry><dmn:outputEntry id="_5FCA1337-6873-4026-B4F2-D0E35FCB7CF8"><dmn:text>if ProcessData.Ctc = true then
+	if ProcessData.CompanyType="Private Company"then 450
+	else 800
+else if ProcessData.Ctc = false then 0 else 0</dmn:text></dmn:outputEntry><dmn:outputEntry id="_F6DD515D-E491-431C-B24C-2B782C661D85"><dmn:text>sum(200,
+    if ProcessData.FedGovOwned = false then
+        if ProcessData.ShareCapital &lt;= 100000 then
+            2200
+        else if ProcessData.ShareCapital &lt;= 5000000000 then
+            ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+        else
+            35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+    else
+        10000,
+    
+    if ProcessData.FillingFee = true then
+        1000
+    else if ProcessData.FillingFee = false then
+        0
+    else
+        0,
+    
+    if ProcessData.BusinessNature = "Voluntary pension funds" then
+        100000
+    else if ProcessData.BusinessNature = "PE and VC fund management (FMC)" then
+        500000
+    else if ProcessData.BusinessNature = "Micro Finance / Micro Credit" then
+        125000
+    else if ProcessData.BusinessNature = "-" then
+        0
+    else
+        250000,
+    
+    if ProcessData.Ctc = true then
+        if ProcessData.CompanyType = "Private Company" then
+            450
+        else
+            800
+    else
+        0
+)
+</dmn:text></dmn:outputEntry><dmn:outputEntry id="_C3C20DCF-AC31-498F-AF6A-31D381B7A373"><dmn:text>{feeIds: [1,2,8,7,9]}</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_34F3FCA0-D453-4415-9404-8BCAA801AC29"><dmn:inputEntry id="_2DCD2F63-2122-45A2-B60E-5797F72E0E4A"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_847CEF0D-7BB2-480A-ADF7-DCCAC58AA551"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_D1E3E575-FF1D-4C44-B07F-3D63F4FDA764"><dmn:text>480</dmn:text></dmn:inputEntry><dmn:inputEntry id="_879B3452-3E88-4E13-BC45-723FB25E4427"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_5F9F7CDB-51AA-4935-8AC3-EA89502C1CB9"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_A98A3269-9626-437E-AA92-A1604296AB73"><dmn:text>&gt;1</dmn:text></dmn:inputEntry><dmn:outputEntry id="_C0730007-BE87-44D9-A577-913FA808E9D4"><dmn:text>200</dmn:text></dmn:outputEntry><dmn:outputEntry id="_F8DEB57B-785D-4D0E-AE33-DE80C8D05332"><dmn:text>if ProcessData.FedGovOwned = false then
+    if ProcessData.ShareCapital &lt;= 100000 then
+        2200
+    else if ProcessData.ShareCapital &lt;= 5000000000 then
+        ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+    else
+        35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+else
+    10000
+</dmn:text></dmn:outputEntry><dmn:outputEntry id="_D9C0633D-B078-48AA-A7C7-E40880AFA9E6"><dmn:text>if ProcessData.FillingFee = true then 1000 
+else if ProcessData.FillingFee = false then 0 else 0</dmn:text></dmn:outputEntry><dmn:outputEntry id="_74E8899D-E873-48DC-A39A-4E20924820AA"><dmn:text>if ProcessData.BusinessNature ="Voluntary pension funds" then 100000 
+else if ProcessData.BusinessNature = "PE and VC fund management (FMC)" then 500000 
+else if ProcessData.BusinessNature="Micro Finance / Micro Credit" then 125000 
+else if ProcessData.BusinessNature="-" then 0 else 250000</dmn:text></dmn:outputEntry><dmn:outputEntry id="_EF96F1C7-F318-47A5-9157-AC441B26CD94"><dmn:text>if ProcessData.Ctc = true then
+	if ProcessData.CompanyType="Private Company"then 450
+	else 800
+else if ProcessData.Ctc = false then 0 else 0</dmn:text></dmn:outputEntry><dmn:outputEntry id="_0D8C67CD-C53C-493B-B523-1388A19ED1E0"><dmn:text>sum(200,
+    if ProcessData.FedGovOwned = false then
+        if ProcessData.ShareCapital &lt;= 100000 then
+            2200
+        else if ProcessData.ShareCapital &lt;= 5000000000 then
+            ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+        else
+            35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+    else
+        10000,
+    
+    if ProcessData.FillingFee = true then
+        1000
+    else if ProcessData.FillingFee = false then
+        0
+    else
+        0,
+    
+    if ProcessData.BusinessNature = "Voluntary pension funds" then
+        100000
+    else if ProcessData.BusinessNature = "PE and VC fund management (FMC)" then
+        500000
+    else if ProcessData.BusinessNature = "Micro Finance / Micro Credit" then
+        125000
+    else if ProcessData.BusinessNature = "-" then
+        0
+    else
+        250000,
+    
+    if ProcessData.Ctc = true then
+        if ProcessData.CompanyType = "Private Company" then
+            450
+        else
+            800
+    else
+        0
+)
+</dmn:text></dmn:outputEntry><dmn:outputEntry id="_982101DE-A0E1-4C86-84FE-5B57898A1CEF"><dmn:text>{feeIds: [1,2,8,7,9]}</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule><dmn:rule id="_28C024F3-85F5-4A35-9794-24EE31770E20"><dmn:inputEntry id="_34F2634F-7FF7-4E5E-8BD8-4992994B1A83"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_0E5BF6CF-DE1B-4472-8F5C-9256BEBBC947"><dmn:text>true</dmn:text></dmn:inputEntry><dmn:inputEntry id="_5C0EE843-3B4B-47E6-A6A2-73DD71DCEEB4"><dmn:text>480</dmn:text></dmn:inputEntry><dmn:inputEntry id="_625659C2-7429-4D7D-8AB2-2FE08137EF45"><dmn:text>"Online"</dmn:text></dmn:inputEntry><dmn:inputEntry id="_EBBB7D44-4306-4600-ACF6-98E5C47B92EC"><dmn:text>false</dmn:text></dmn:inputEntry><dmn:inputEntry id="_1D6005AD-5738-4996-B7F8-6E85605E8720"><dmn:text>=0</dmn:text></dmn:inputEntry><dmn:outputEntry id="_5DCB2812-8F94-4D91-B74C-D8B971804C6C"><dmn:text>200</dmn:text></dmn:outputEntry><dmn:outputEntry id="_30F185F9-B565-4F9C-B1BF-22DC41E97CA6"><dmn:text>if ProcessData.FedGovOwned = false and ProcessData.ShareCapital != 0 then
+    if ProcessData.ShareCapital &lt;= 100000 then
+        2200
+    else if ProcessData.ShareCapital &lt;= 5000000000 then
+        ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+    else
+        35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+else if ProcessData.CompanyType="Companies u/s 42" then 27500
+else if ProcessData.CompanyType="Foreign Company" then 11000
+else
+    22000
+</dmn:text></dmn:outputEntry><dmn:outputEntry id="_F964F082-B9B4-4A14-B5B0-5282A56C6F99"><dmn:text>if ProcessData.FillingFee = true then 1000 
+else if ProcessData.FillingFee = false then 0 else 0</dmn:text></dmn:outputEntry><dmn:outputEntry id="_38CE65A7-D2C8-4A14-A2A3-D7DE2DB0D455"><dmn:text>if ProcessData.CompanyType = "Companies u/s 42" then
+    150000
+else
+    0
+</dmn:text></dmn:outputEntry><dmn:outputEntry id="_383019CD-C53C-4C3D-AB4A-55A57E212656"><dmn:text>if ProcessData.Ctc = true then
+	if ProcessData.CompanyType="Private Company"then 450
+	else 800
+else if ProcessData.Ctc = false then 0 else 0</dmn:text></dmn:outputEntry><dmn:outputEntry id="_02A2DBCE-D878-4C0B-96AE-6A7FBE34CAE2"><dmn:text>sum(200,
+   if ProcessData.FedGovOwned = false and ProcessData.ShareCapital != 0 then
+    if ProcessData.ShareCapital &lt;= 100000 then
+        2200
+    else if ProcessData.ShareCapital &lt;= 5000000000 then
+        ceiling((ProcessData.ShareCapital - 100000) / 100000) * 700 + 2200
+    else
+        35001500 + ceiling((ProcessData.ShareCapital - 5000000000) / 100000) * 165
+     else if ProcessData.CompanyType="Companies u/s 42" then 27500
+    else if ProcessData.CompanyType="Foreign Company" then 11000
+     else
+        22000
+,
+    if ProcessData.CompanyType = "Companies u/s 42" then
+    150000
+    else
+    0,
+    if ProcessData.FillingFee = true then
+        1000
+    else if ProcessData.FillingFee = false then
+        0
+    else
+       
+    if ProcessData.Ctc = true then
+        if ProcessData.CompanyType = "Private Company" then
+            450
+        else
+            800
+    else
+        0
+)
+</dmn:text></dmn:outputEntry><dmn:outputEntry id="_D0FA4FE0-AA55-4EA6-96C8-0141F56A10E0"><dmn:text>{feeIds: [1,2,8,9]}</dmn:text></dmn:outputEntry><dmn:annotationEntry><dmn:text></dmn:text></dmn:annotationEntry></dmn:rule></dmn:decisionTable></dmn:decision><dmndi:DMNDI><dmndi:DMNDiagram id="_49BBA1B6-19F5-4E21-81CC-AA0A4AFD4FBA" name="DRG"><di:extension><kie:ComponentsWidthsExtension><kie:ComponentWidths dmnElementRef="_BD850916-7EDD-47A5-BC22-3AB75766614D"><kie:width>50</kie:width><kie:width>431</kie:width><kie:width>178</kie:width><kie:width>263</kie:width><kie:width>328</kie:width><kie:width>100</kie:width><kie:width>100</kie:width></kie:ComponentWidths><kie:ComponentWidths dmnElementRef="_622186C7-8817-48B7-A106-EF2C96FFE054"><kie:width>50</kie:width><kie:width>265</kie:width><kie:width>165</kie:width><kie:width>143</kie:width><kie:width>201</kie:width><kie:width>427</kie:width><kie:width>241</kie:width><kie:width>189</kie:width><kie:width>894</kie:width><kie:width>778</kie:width><kie:width>1252</kie:width><kie:width>666</kie:width><kie:width>768</kie:width><kie:width>100</kie:width></kie:ComponentWidths><kie:ComponentWidths dmnElementRef="_5B15D920-BE92-45A1-A977-9D7CCBAF4F2B"><kie:width>50</kie:width><kie:width>214</kie:width><kie:width>165</kie:width><kie:width>143</kie:width><kie:width>201</kie:width><kie:width>427</kie:width><kie:width>241</kie:width><kie:width>146</kie:width><kie:width>894</kie:width><kie:width>778</kie:width><kie:width>1252</kie:width><kie:width>666</kie:width><kie:width>768</kie:width><kie:width>211</kie:width><kie:width>100</kie:width></kie:ComponentWidths></kie:ComponentsWidthsExtension></di:extension><dmndi:DMNShape id="dmnshape-drg-_4E3179CF-18BB-4A69-ABA3-B45B7314743D" dmnElementRef="_4E3179CF-18BB-4A69-ABA3-B45B7314743D" isCollapsed="false"><dmndi:DMNStyle><dmndi:FillColor red="255" green="255" blue="255"/><dmndi:StrokeColor red="0" green="0" blue="0"/><dmndi:FontColor red="0" green="0" blue="0"/></dmndi:DMNStyle><dc:Bounds x="476.29906542056074" y="433" width="100" height="50"/><dmndi:DMNLabel/></dmndi:DMNShape><dmndi:DMNShape id="dmnshape-drg-_8C264E3C-B681-4ACF-8F2E-F2BEEA79ACB4" dmnElementRef="_8C264E3C-B681-4ACF-8F2E-F2BEEA79ACB4" isCollapsed="false"><dmndi:DMNStyle><dmndi:FillColor red="255" green="255" blue="255"/><dmndi:StrokeColor red="0" green="0" blue="0"/><dmndi:FontColor red="0" green="0" blue="0"/></dmndi:DMNStyle><dc:Bounds x="270" y="178" width="100" height="50"/><dmndi:DMNLabel/></dmndi:DMNShape><dmndi:DMNShape id="dmnshape-drg-_EC9133E3-A168-425E-9626-017337CBFC65" dmnElementRef="_EC9133E3-A168-425E-9626-017337CBFC65" isCollapsed="false"><dmndi:DMNStyle><dmndi:FillColor red="255" green="255" blue="255"/><dmndi:StrokeColor red="0" green="0" blue="0"/><dmndi:FontColor red="0" green="0" blue="0"/></dmndi:DMNStyle><dc:Bounds x="684" y="178" width="100" height="50"/><dmndi:DMNLabel/></dmndi:DMNShape><dmndi:DMNShape id="dmnshape-drg-_E5C06A69-9880-4CA9-AE13-08C2577DA57D" dmnElementRef="_E5C06A69-9880-4CA9-AE13-08C2577DA57D" isCollapsed="false"><dmndi:DMNStyle><dmndi:FillColor red="255" green="255" blue="255"/><dmndi:StrokeColor red="0" green="0" blue="0"/><dmndi:FontColor red="0" green="0" blue="0"/></dmndi:DMNStyle><dc:Bounds x="487" y="178" width="100" height="50"/><dmndi:DMNLabel/></dmndi:DMNShape><dmndi:DMNEdge id="dmnedge-drg-_A725279A-EDEE-4E31-9927-9DDAB126A54D" dmnElementRef="_A725279A-EDEE-4E31-9927-9DDAB126A54D"><di:waypoint x="526.2990654205607" y="458"/><di:waypoint x="320" y="228"/></dmndi:DMNEdge><dmndi:DMNEdge id="dmnedge-drg-_C4072869-C183-45AF-9366-7CDD9AD773CF" dmnElementRef="_C4072869-C183-45AF-9366-7CDD9AD773CF"><di:waypoint x="526.2990654205607" y="458"/><di:waypoint x="734" y="228"/></dmndi:DMNEdge><dmndi:DMNEdge id="dmnedge-drg-_212396B1-1C68-41AE-B8C6-6FFA8CA7EB78" dmnElementRef="_212396B1-1C68-41AE-B8C6-6FFA8CA7EB78"><di:waypoint x="526.2990654205607" y="458"/><di:waypoint x="537" y="228"/></dmndi:DMNEdge></dmndi:DMNDiagram></dmndi:DMNDI></dmn:definitions>
